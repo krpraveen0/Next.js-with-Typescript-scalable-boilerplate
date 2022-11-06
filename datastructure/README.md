@@ -101,12 +101,36 @@ Note that the use of engine-strict didn't specifically say anything about yarn, 
 - As our intention is to create a scalable application, so it's very important to maintain our codebase and manage it's various versions and modules by different developers. So for maintaining & managing our codebase we will be using GIT as a VCS software and github as a cloud platform to host our codebase.
 - Let's add our code to get tracked by the git
 ```
-    git add .
+>git add .
+> git status    
+On branch next-ts-13-boilerplate
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   .gitignore
+        new file:   .npmrc
+        new file:   .nvmrc
+        new file:   .vscode/settings.json
+        new file:   README.md
+        new file:   app/globals.css
+        new file:   app/head.tsx
+        new file:   app/layout.tsx
+        new file:   app/page.module.css
+        new file:   app/page.tsx
+        new file:   next.config.js
+        new file:   package-lock.json
+        new file:   package.json
+        new file:   pages/api/hello.ts
+        new file:   public/favicon.ico
+        new file:   public/vercel.svg
+        new file:   tsconfig.json
 ```
 - Now it's the best time to write our first commit 
 ```
 
 ```
+
+- While writting the commit messages we will be following commit convention to write human redable commit message[https://www.conventionalcommits.org/en/v1.0.0/#summary]
+
 
 First, run the development server:
 
