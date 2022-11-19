@@ -259,8 +259,38 @@ In order to enforce common coding standard & rules for all the conftributor in o
     ```
     Now let's check if prettier has been configured properly by running the below command
     ``` yarn prettier ```
-    If everything works fine prettier will format all the files.
+    If everything works fine prettier will format all the files. We can see those changes by git status command
 
+## Configuring Git Hooks
+    We will be configuring *husky* which is a tool or git hook used for running scripts at different stages of the git process. 
+    Example: while git add, commit, push etc
+    We will try to set certain conditions, and only allow things like commit & push by the contributor only if code written meets those conditions, presuming that it indicates our project is of acceptable quality.
+    Let's install husky by using the below command: 
+        ``` yarn add -D husky ```
+    Then, to create .husky directory where exactly our hooks will live. 
+        ``` npx husky install ```
+    Make sure *.husky* directory is included in our code repo as it's intended for other developers as well not just for me/you.
+
+    Then we need to add script command for husky inside pakage.json file as given below
+        "scripts": {
+            "dev": "next dev",
+            "build": "next build",
+            "start": "next start",
+            "lint": "next lint",
+            "prettier": "prettier --write .",
+            *"prepare": "husky install"*
+        },
+        ```"prepare": "husky install" ensures husky get's installed automatically when other developers run this project
+        ```
+    Now in order to create a run hook hit the below given command ie 
+    ``` 
+        npx husky add .husky/pre-commit "yarn lint"
+    ```
+    Above command says that in order for our commit to succed, the `yarn lint` script must first run and succed in this context means no errors. We can also configure warnings on failure of the hooks
+    Note: ESLint config a setting of 1 is a warning and 2 is a n error. 
+    
+
+        
 
 
 
