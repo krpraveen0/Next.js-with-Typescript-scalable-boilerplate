@@ -3,26 +3,37 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Getting Started
 
 - Installing latest version of Nextjs ie v13 with typescript
+
 ```
     npx create-next-app@latest --experimental-app --ts
- ```
+```
+
 - Project Setup
-    -- we will move inside our app root directory 
+  -- we will move inside our app root directory
+
 ```
     cd datastructure
 ```
-| we will be using ```yarn``` as a package manager, but you are open to use ```npm``` as well
+
+| we will be using `yarn` as a package manager, but you are open to use `npm` as well
+
 ```
     yarn install
     yarn dev
 ```
+
 After running above command we will be having our application live on http://localhost:3000.
 
 - Now to check our repo for production let's build our application
-``` yarn build
+
+```yarn build
+
 ```
+
 -- Note: It is recommended to close the server while running the build, but it is not manadatory.
+
 - After running the build we will get good description about the application build.
+
 ```
     yarn run v1.22.17
     $ next build
@@ -30,11 +41,11 @@ After running above command we will be having our application live on http://loc
     warn  - Experimental features are not covered by semver, and may cause unexpected or broken application behavior. Use at your own risk.
     info  - Thank you for testing `appDir` please leave your feedback at https://nextjs.link/app-feedback
 
-    info  - Creating an optimized production build  
+    info  - Creating an optimized production build
     info  - Compiled successfully
     info  - Linting and checking validity of types ..info  - VS Code settings.json has been created for Next.js' automatic app types, this file can be added to .gitignore if desired
-    info  - Linting and checking validity of types  
-    info  - Collecting page data  
+    info  - Linting and checking validity of types
+    info  - Collecting page data
     info  - Generating static pages (3/3)
     info  - Finalizing page optimization
 
@@ -54,18 +65,20 @@ After running above command we will be having our application live on http://loc
     └ chunks/webpack-9e765e27c32b1a64.js     2.07 kB
 
     λ  (Server)  server-side renders at runtime (uses getInitialProps or getServerSideProps)
-    ○  (Static)  automatically rendered as static HTML (uses no initial props)       
+    ○  (Static)  automatically rendered as static HTML (uses no initial props)
 
     Done in 56.45s.
 ```
 
-## ## Engine Locking 
+## ## Engine Locking
+
 - As we are working with node.js, so it's very important to settle on a single run time engine & package manager for every developer working on this application.
 - In order to lock an engine we will be creating two files
-    1. .nvmrc - this file informs the other developers about the node version being used 
-    2. .npmrc - this file informs other developers about the package manager being used 
+  1. .nvmrc - this file informs the other developers about the node version being used
+  2. .npmrc - this file informs other developers about the package manager being used
 
 Note that the use of engine-strict didn't specifically say anything about yarn, we do that in package.json as given below:
+
 ```
 {
     "name": "datastructure",
@@ -94,15 +107,17 @@ Note that the use of engine-strict didn't specifically say anything about yarn, 
 }
 
 ```
-|In above the engines field is where we specify the specific versions of the tools[node engine, package manager] we are using 
 
+|In above the engines field is where we specify the specific versions of the tools[node engine, package manager] we are using
 
 #### Version Control System
+
 - As our intention is to create a scalable application, so it's very important to maintain our codebase and manage it's various versions and modules by different developers. So for maintaining & managing our codebase we will be using GIT as a VCS software and github as a cloud platform to host our codebase.
 - Let's add our code to get tracked by the git
+
 ```
 >git add .
-> git status    
+> git status
 On branch next-ts-13-boilerplate
 Changes to be committed:
   (use "git restore --staged <file>..." to unstage)
@@ -124,7 +139,9 @@ Changes to be committed:
         new file:   public/vercel.svg
         new file:   tsconfig.json
 ```
-- Now it's the best time to write our first commit 
+
+- Now it's the best time to write our first commit
+
 ```
      git commit -m "Datastructure Project Initialized"
 [next-ts-13-boilerplate 098a405] Datastructure Project Initialized
@@ -148,7 +165,7 @@ On branch next-ts-13-boilerplate
 
 no changes added to commit (use "git add" and/or "git commit -a")
 > git add .\README.md
-> git commit -m 
+> git commit -m
 error: switch `m' requires a value
 > git commit -m "change: added new takeup"
 [next-ts-13-boilerplate 8923639] change: added new takeup
@@ -156,7 +173,6 @@ error: switch `m' requires a value
 ```
 
 - While writting the commit messages we will be following commit convention to write human redable commit message[https://www.conventionalcommits.org/en/v1.0.0/#summary]
-
 
 First, run the development server:
 
@@ -171,9 +187,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 ##Configuring Code Formatting
-In order to enforce common coding standard & rules for all the conftributor in order to maintain the best practices, style[formatting] & coding standard consistency. In order to achieve this we will be using two tools:
-    1. eslint : For maintaining the best practices coding standards
-    2. prettier. For automatic code formatting of the code.
+In order to enforce common coding standard & rules for all the conftributor in order to maintain the best practices, style[formatting] & coding standard consistency. In order to achieve this we will be using two tools: 1. eslint : For maintaining the best practices coding standards 2. prettier. For automatic code formatting of the code.
 
     #1. eslint
         - eslint, automatically comes installed and pre-cofigured with nextjs projects, we will be making use of that with bit stricter rules. To do so we will configure everything in `.eslintrc.json` ie
@@ -189,12 +203,12 @@ In order to enforce common coding standard & rules for all the conftributor in o
             }
 
         ```
-        - In above eslintrc file we have added some configuration, 
+        - In above eslintrc file we have added some configuration,
             - One of them is that we have said React will be always be defined even if we don't specifically import it.
             - Also I have added one custom rule to prefix unused variable with _ . So if we want to declare any variable for future use then we can prefix them with _.
         - Now let's install eslint package for nextjs ie eslint-config-next ie
             ``` yarn add -D eslint-config-next ```
-        
+
         Now to test our lint rules hit the below command in command prompt/terminal
             ``` yarn lint ```
         The above command will show the below output ie..
@@ -204,14 +218,52 @@ In order to enforce common coding standard & rules for all the conftributor in o
             $ next lint
             warn  - You have enabled experimental feature (appDir) in next.config.js.
             warn  - Experimental features are not covered by semver, and may cause unexpected or broken application behavior. Use at your own risk.
-            info  - Thank you for testing `appDir` please leave your feedback at https://nextjs.link/app-feedback       
+            info  - Thank you for testing `appDir` please leave your feedback at https://nextjs.link/app-feedback
 
             ✔ No ESLint warnings or errors
             Done in 3.26s.
         ```
-        
-        
-        
+    #2. Configuring Prettier
+    We are adding Prettier as it will take care of automatically fomatting our files
+    to add prettier to our repo run the below command
+    ```
+         yarn add -D prettier
+    ```
+    Also I highly recommend installing prettier VS code extension so that VS Code can handle the formatting of the files for us & we don't need to hit command every time to style our code. So let's create a file to keep all prettier related configuration inside it so that VS Code can use those settings for formatting the code.
+    At root let's create a file `.prettierrc` add the below written code inside it
+    ```
+        {
+            "trailingComma": "es5",
+            "tabWidth": 2,
+            "semi": true,
+            "singleQuote": true
+        }
+    ```
+    Now let's create another file at root ie .prettierignore which will contain all the files which we don't want prettier to ignore. Add the below files inside .prettierignore file
+    ```
+        .yarn
+        .next
+        dist
+        node_modules
+    ```
+    Now let's add a new script in package.json file to run prettier
+    - package.json
+    ```
+        "scripts": {
+            "dev": "next dev",
+            "build": "next build",
+            "start": "next start",
+            "lint": "next lint",
+            "prettier": "prettier --write ."
+        },
+    ```
+    Now let's check if prettier has been configured properly by running the below command
+    ``` yarn prettier ```
+    If everything works fine prettier will format all the files.
+
+
+
+
 
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
@@ -231,4 +283,3 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-
