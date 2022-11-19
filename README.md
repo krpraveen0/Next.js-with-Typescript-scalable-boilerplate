@@ -288,6 +288,75 @@ In order to enforce common coding standard & rules for all the conftributor in o
     ```
     Above command says that in order for our commit to succed, the `yarn lint` script must first run and succed in this context means no errors. We can also configure warnings on failure of the hooks
     Note: ESLint config a setting of 1 is a warning and 2 is a n error. 
+
+    Let's add one more hook ie
+    ```
+        npx husky add .husky/pre-push "yarn build"
+    ```
+    The above hook ensures that we are not allowed to push to the remote repository unless our code can successfully build.
+
+## Commit Convention
+    - Let's add one more tool which will encourage all the contributors of the repo to write standard commit messages. So let's add commitlint for this repo
+
+    ``` yarn add -D @commitlint/config-conventional @commitlint/cli
+    ```
+    To configure commitlint we will be using set of standard defaults, but let's list explicitly in a ``` commitlint.config.js ``` file for all contributers working on this repo.
+    ```
+        // build: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
+        // ci: Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)
+        // docs: Documentation only changes
+        // feat: A new feature
+        // fix: A bug fix
+        // perf: A code change that improves performance
+        // refactor: A code change that neither fixes a bug nor adds a feature
+        // style: Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)
+        // test: Adding missing tests or correcting existing tests
+
+        module.exports = {
+            extends: ['@commitlint/config-conventional'],
+            rules: {
+            'body-leading-blank': [1, 'always'],
+            'body-max-line-length': [2, 'always', 100],
+            'footer-leading-blank': [1, 'always'],
+            'footer-max-line-length': [2, 'always', 100],
+            'header-max-length': [2, 'always', 100],
+            'scope-case': [2, 'always', 'lower-case'],
+            'subject-case': [
+                2,
+                'never',
+                ['sentence-case', 'start-case', 'pascal-case', 'upper-case'],
+            ],
+            'subject-empty': [2, 'never'],
+            'subject-full-stop': [2, 'never', '.'],
+            'type-case': [2, 'always', 'lower-case'],
+            'type-empty': [2, 'never'],
+            'type-enum': [
+                2,
+                'always',
+                [
+                'build',
+                'chore',
+                'ci',
+                'docs',
+                'feat',
+                'fix',
+                'perf',
+                'refactor',
+                'revert',
+                'style',
+                'test',
+                'translation',
+                'security',
+                'changeset',
+                ],
+            ],
+            },
+        };
+    ```
+    After that let's enable commitlint with husky by below command
+    ``` 
+        npx husky add .husky/commit-msg 'npx --no --commitlint --edit "$1"'
+    ```
     
 
         
