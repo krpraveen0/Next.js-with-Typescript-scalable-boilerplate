@@ -126,7 +126,33 @@ Changes to be committed:
 ```
 - Now it's the best time to write our first commit 
 ```
+     git commit -m "Datastructure Project Initialized"
+[next-ts-13-boilerplate 098a405] Datastructure Project Initialized
+ 17 files changed, 1247 insertions(+)
+ create mode 100644 datastructure/.gitignore
+ create mode 100644 datastructure/.npmrc
+ create mode 100644 datastructure/.nvmrc
+ create mode 100644 datastructure/.vscode/settings.json
+ create mode 100644 datastructure/app/globals.css
+ create mode 100644 datastructure/app/head.tsx
+ create mode 100644 datastructure/app/layout.tsx
+ create mode 100644 datastructure/app/page.module.css
+ create mode 100644 datastructure/app/page.tsx
+ create mode 100644 datastructure/next.config.js
+ create mode 100644 datastructure/package-lock.json
+ create mode 100644 datastructure/public/favicon.ico
+> git status
+On branch next-ts-13-boilerplate
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
 
+no changes added to commit (use "git add" and/or "git commit -a")
+> git add .\README.md
+> git commit -m 
+error: switch `m' requires a value
+> git commit -m "change: added new takeup"
+[next-ts-13-boilerplate 8923639] change: added new takeup
+ 1 file changed, 25 insertions(+), 1 deletion(-)
 ```
 
 - While writting the commit messages we will be following commit convention to write human redable commit message[https://www.conventionalcommits.org/en/v1.0.0/#summary]
@@ -143,6 +169,49 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+
+##Configuring Code Formatting
+In order to enforce common coding standard & rules for all the conftributor in order to maintain the best practices, style[formatting] & coding standard consistency. In order to achieve this we will be using two tools:
+    1. eslint : For maintaining the best practices coding standards
+    2. prettier. For automatic code formatting of the code.
+
+    #1. eslint
+        - eslint, automatically comes installed and pre-cofigured with nextjs projects, we will be making use of that with bit stricter rules. To do so we will configure everything in `.eslintrc.json` ie
+        ```
+            {
+                "extends": ["next","next/core-web-vitals","eslint:recommended"],
+                "globals":{
+                    "React": "readonly"
+                },
+                "rules":{
+                    "no-unused-vars": [1,{"args":"after-used","argsIgnorePattern":"^_"}]
+                }
+            }
+
+        ```
+        - In above eslintrc file we have added some configuration, 
+            - One of them is that we have said React will be always be defined even if we don't specifically import it.
+            - Also I have added one custom rule to prefix unused variable with _ . So if we want to declare any variable for future use then we can prefix them with _.
+        - Now let's install eslint package for nextjs ie eslint-config-next ie
+            ``` yarn add -D eslint-config-next ```
+        
+        Now to test our lint rules hit the below command in command prompt/terminal
+            ``` yarn lint ```
+        The above command will show the below output ie..
+        ```
+            yarn lint
+            yarn run v1.22.17
+            $ next lint
+            warn  - You have enabled experimental feature (appDir) in next.config.js.
+            warn  - Experimental features are not covered by semver, and may cause unexpected or broken application behavior. Use at your own risk.
+            info  - Thank you for testing `appDir` please leave your feedback at https://nextjs.link/app-feedback       
+
+            ✔ No ESLint warnings or errors
+            Done in 3.26s.
+        ```
+        
+        
+        
 
 [API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
 
@@ -162,3 +231,4 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+
