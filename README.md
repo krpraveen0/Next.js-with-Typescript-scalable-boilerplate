@@ -380,8 +380,55 @@ In order to enforce common coding standard & rules for all the conftributor in o
         - formats & organizes the imports of the file on saving the file.
     
     
-
-        
+## Debugging
+Now we will setup a convenient environment for debugging our application/project in case we run into any issues during the development phase.
+So create `launch.json` file inside `.vscode/` folder
+    - launch.json
+        ```
+            {
+                "version": "0.1.0",
+                "configurations": [
+                    {
+                    "name": "Next.js: debug server-side",
+                    "type": "node-terminal",
+                    "request": "launch",
+                    "command": "npm run dev"
+                    },
+                    {
+                    "name": "Next.js: debug client-side",
+                    "type": "pwa-chrome",
+                    "request": "launch",
+                    "url": "http://localhost:3000"
+                    },
+                    {
+                    "name": "Next.js: debug full stack",
+                    "type": "node-terminal",
+                    "request": "launch",
+                    "command": "npm run dev",
+                    "console": "integratedTerminal",
+                    "serverReadyAction": {
+                        "pattern": "started server on .+, url: (https?://.+)",
+                        "uriFormat": "%s",
+                        "action": "debugWithChrome"
+                    }
+                    }
+                ]
+            }
+        ```
+    Now in order to log server data in the browser while working in dev mode, we will install a package ie *cross-env*  by using the below command 
+    ``` yarn add -D cross-env ```
+    Then let's add respective script option inside package.json file
+        ```
+            "scripts": {
+                "dev": "cross-env NODE_OPTIONS='--inspect' next dev",
+                "build": "next build",
+                "start": "next start",
+                "lint": "next lint",
+                "prettier": "prettier --write .",
+                "prepare": "husky install"
+            }, 
+        ```
+    Now we can debug our code easily   
 
 
 
