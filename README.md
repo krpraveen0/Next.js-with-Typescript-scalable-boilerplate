@@ -357,6 +357,28 @@ In order to enforce common coding standard & rules for all the conftributor in o
     ``` 
         npx husky add .husky/commit-msg 'npx --no --commitlint --edit "$1"'
     ```
+## VS Code Configuration
+    - Create a directory `.vscode` in the root of the project
+    - Inside .vscode folder create a file ie ` settings.json `, which we will be using to list out values that overrides the default settings of installed VS code of the contributor.
+    - We can use this settings.json to set specific settings that only apply to this project, and share them with the rest of the our team by including .vscode in the code repository.
+
+    Add the below lines of code inside ./vscode/settings.json file
+    ```
+        {
+            "typescript.tsdk": "./node_modules/typescript/lib",
+            "typescript.enablePromptUseWorkspaceTsdk": true,
+            "editor.defaultFormatter": "esbenp.prettier-vscode",
+            "editor.formatOnSave": true,
+            "editor.codeActionsOnSave": {
+                "source.fixAll": true,
+                "source.organizeImports": true
+            }
+        }
+    ``` 
+    The above lines of code 
+        - tells VS Code to use prettier extension as the default formatter( if someone want to use any other formatter, they are free to do so.)
+        - formats & organizes the imports of the file on saving the file.
+    
     
 
         
